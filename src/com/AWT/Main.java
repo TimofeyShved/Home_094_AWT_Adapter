@@ -64,16 +64,16 @@ public class Main {
 
         okButton0.addFocusListener(new FocusAdapter(){ // действие
             public void focusGained(FocusEvent e) {
-                statusLabel.setText(statusLabel.getText()
-                        + e.getComponent().getClass().getSimpleName()
+                statusLabel.setText(//statusLabel.getText()+
+                        e.getComponent().getClass().getSimpleName()
                         + " gained focus. ");
             }
         });
 
         cancelButton.addFocusListener(new FocusAdapter(){  // действие
             public void focusLost(FocusEvent e) {
-                statusLabel.setText(statusLabel.getText()
-                        + e.getComponent().getClass().getSimpleName()
+                statusLabel.setText(//statusLabel.getText()+
+                        e.getComponent().getClass().getSimpleName()
                         + " lost focus. ");
             }
         });
@@ -104,6 +104,47 @@ public class Main {
         // добавление объектов на форму
         controlPanel.add(textField);
         controlPanel.add(okButton1);
+
+        // --------------------------------------- AWT MouseAdapter Class
+        Panel panel = new Panel(); // создание пенели
+        panel.setBackground(Color.blue);
+        panel.setLayout(new FlowLayout());
+
+        panel.addMouseListener(new MouseAdapter(){ // действие Clicked
+            public void mouseClicked(MouseEvent e) {
+                statusLabel.setText("Mouse Clicked: ("
+                        +e.getX()+", "+e.getY() +")");
+            }
+        });
+
+        panel.addMouseMotionListener(new MouseMotionAdapter(){ // действие Moved
+            public void mouseMoved(MouseEvent e) {
+                statusLabel.setText("Mouse Moved: ("+e.getX()+", "+e.getY() +")");
+            }
+        });
+
+        Label msglabel = new Label(); // метка
+        msglabel.setAlignment(Label.CENTER);
+        msglabel.setForeground(Color.WHITE); // цвет
+        msglabel.setText("Привет, мир!");
+
+        msglabel.addMouseListener(new MouseAdapter(){ // действие Clicked
+            public void mouseClicked(MouseEvent e) {
+                statusLabel.setText("Mouse Clicked: ("
+                        +e.getX()+", "+e.getY() +")");
+            }
+        });
+
+        msglabel.addMouseMotionListener(new MouseMotionAdapter(){ // действие Moved
+            public void mouseMoved(MouseEvent e) {
+                statusLabel.setText("Mouse Moved: ("+e.getX()+", "+e.getY() +")");
+            }
+        });
+
+        panel.add(msglabel);
+        controlPanel.add(panel);
+
+        // --------------------------------------- AWT MouseAdapter Class
 
         mainFrame.setVisible(true); // видимость формы true
     }
