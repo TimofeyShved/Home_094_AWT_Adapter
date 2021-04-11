@@ -142,9 +142,34 @@ public class Main {
         });
 
         panel.add(msglabel);
-        controlPanel.add(panel);
+        controlPanel.add(panel); // добавление объектов на форму
 
         // --------------------------------------- AWT MouseAdapter Class
+
+        final Frame aboutFrame = new Frame(); // новая форма
+        aboutFrame.setSize(300,200); // размеры
+        aboutFrame.setTitle("WindowAdapter Demo"); // Title
+
+        aboutFrame.addWindowListener(new WindowAdapter() { // действие
+            public void windowClosing(WindowEvent windowEvent){
+                aboutFrame.dispose();
+            }
+        });
+
+        Label msgLabel = new Label("Окно формы №2."); // метка
+        msgLabel.setAlignment(Label.CENTER);
+        msgLabel.setSize(100,100);
+        aboutFrame.add(msgLabel); // добавить на 2 форму
+
+        Button Button3 = new Button("Показать");
+
+        Button3.addActionListener(new ActionListener() { // действие кнопки
+            public void actionPerformed(ActionEvent e) {
+                aboutFrame.setVisible(true);
+            }
+        });
+
+        panel.add(Button3); // добавление объектов на форму
 
         mainFrame.setVisible(true); // видимость формы true
     }
